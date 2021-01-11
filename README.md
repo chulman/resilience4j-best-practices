@@ -10,7 +10,7 @@
 ##  Hystrix vs Resilience4j
 
 ### Hystrix
->[2. module  in Maintenance](https://github.com/spring-cloud/spring-cloud-netflix) - Placing a module in maintenance mode means that the Spring Cloud team will no longer be adding new features to the module. We will fix blocker bugs and security issues, and we will also consider and review small pull requests from the community.
+>[2. module  in Maintenance](https://github.com/spring-cloud/spring-cloud-netflix#2-modules-in-maintenance-mode) - Placing a module in maintenance mode means that the Spring Cloud team will no longer be adding new features to the module. We will fix blocker bugs and security issues, and we will also consider and review small pull requests from the community.
 
 ![hystrix](./img/hystrix.png)
 
@@ -22,7 +22,7 @@
 
 ### Resilience4j
 > Resilience4j is a lightweight, easy-to-use fault tolerance library inspired by Netflix Hystrix.
-- resilience4j는 Hystrix로부터 영감을 받은 fault tolerance library다.
+- resilience4j는 Hystrix로부터 영감을 받은 fault tolerance library이며, hystrix에 비해 몇몇 더 나은 점이 존재한다.
     + 가볍고, hystrix에 비해 사용하기가 정말 쉽다.
     + RxJava operators를 지원한다.
     + Resilience4j는 요청의 수행 횟수와 threshold 값을 설정할 수 있다.
