@@ -1,0 +1,50 @@
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  health:
+    circuitbreakers:
+      enabled: true
+    ratelimiters:
+      enabled: true
+
+resilience4j:
+  circuitbreaker:
+    configs:
+      default:
+        slidingWindowSize: 10
+        slidingWindowType: COUNT_BASED  # 서킷에서 사용할 슬라이딩 윈도우 타입 설정(카운트,시간)
+        minimumNumberOfCalls: 5
+        permittedNumberOfCallsInHalfOpenState: 3
+        automaticTransitionFromOpenToHalfOpenEnabled: true
+        waitDurationInOpenState: 5s
+    instances:
+      helloCircuit:
+        baseConfig: default
+        failureRateThreshold: 50
+        recordExceptions:
+          - org.springframework.web.client.HttpServerErrorException
+
+############### 기본값 #################
+## https://resilience4j.readme.io/docs/circuitbreaker
+#### 서킷에서 사용할 슬라이딩윈도우 타입 설정(카운트,시간)
+#  slidingWindowType:  COUNT_BASED
+#### 서킷 판단에 필요한 윈도우 크기
+#  slidingWindowSize  100
+#### 서킷 판단에 필요한 최소 요청수
+#  minimumNumberOfCalls 100
+### 서킷 오픈 상태에서 하프오픈으로 변환될때 기다리는 시간
+#  waitDurationInOpenState 60000
+### 실패 요청 threshold
+#  failureRateThreshold 50
+###  하프오픈 상태에서 테스트하는 요청 수
+#  permittedNumberOfCallsInHalfOpenState 10
+###  failure에 포함되는 예외
+#  recordExceptions empty (all)
+###  failure에 포함되지 않는 예외
+#  ignoreExceptions empty (no)
+### slow 요청에 대한 threshold
+#  slowCallRateThreshold 10
+### slow 요청 기준값
+#  slowCallDurationThreshold  60000
